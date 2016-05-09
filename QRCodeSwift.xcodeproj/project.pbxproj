@@ -1,0 +1,304 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CACC20BF1CE070F90009AD16 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC20BE1CE070F90009AD16 /* AppDelegate.swift */; };
+		CACC20C11CE070F90009AD16 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC20C01CE070F90009AD16 /* ViewController.swift */; };
+		CACC20C41CE070F90009AD16 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC20C21CE070F90009AD16 /* Main.storyboard */; };
+		CACC20C61CE070F90009AD16 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CACC20C51CE070F90009AD16 /* Assets.xcassets */; };
+		CACC20C91CE070F90009AD16 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC20C71CE070F90009AD16 /* LaunchScreen.storyboard */; };
+		CACC20D11CE0811C0009AD16 /* QRCodeReaderViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CACC20D01CE0811C0009AD16 /* QRCodeReaderViewController.storyboard */; };
+		CACC20D31CE0813A0009AD16 /* QRCodeReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC20D21CE0813A0009AD16 /* QRCodeReaderViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		CACC20BB1CE070F80009AD16 /* QRCodeSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeSwift.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACC20BE1CE070F90009AD16 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		CACC20C01CE070F90009AD16 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CACC20C31CE070F90009AD16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		CACC20C51CE070F90009AD16 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		CACC20C81CE070F90009AD16 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CACC20CA1CE070F90009AD16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CACC20D01CE0811C0009AD16 /* QRCodeReaderViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QRCodeReaderViewController.storyboard; sourceTree = "<group>"; };
+		CACC20D21CE0813A0009AD16 /* QRCodeReaderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeReaderViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CACC20B81CE070F80009AD16 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CACC20B21CE070F80009AD16 = {
+			isa = PBXGroup;
+			children = (
+				CACC20BD1CE070F90009AD16 /* QRCodeSwift */,
+				CACC20BC1CE070F80009AD16 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CACC20BC1CE070F80009AD16 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CACC20BB1CE070F80009AD16 /* QRCodeSwift.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CACC20BD1CE070F90009AD16 /* QRCodeSwift */ = {
+			isa = PBXGroup;
+			children = (
+				CACC20BE1CE070F90009AD16 /* AppDelegate.swift */,
+				CACC20C01CE070F90009AD16 /* ViewController.swift */,
+				CACC20C21CE070F90009AD16 /* Main.storyboard */,
+				CACC20D21CE0813A0009AD16 /* QRCodeReaderViewController.swift */,
+				CACC20D01CE0811C0009AD16 /* QRCodeReaderViewController.storyboard */,
+				CACC20C51CE070F90009AD16 /* Assets.xcassets */,
+				CACC20C71CE070F90009AD16 /* LaunchScreen.storyboard */,
+				CACC20CA1CE070F90009AD16 /* Info.plist */,
+			);
+			path = QRCodeSwift;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CACC20BA1CE070F80009AD16 /* QRCodeSwift */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CACC20CD1CE070F90009AD16 /* Build configuration list for PBXNativeTarget "QRCodeSwift" */;
+			buildPhases = (
+				CACC20B71CE070F80009AD16 /* Sources */,
+				CACC20B81CE070F80009AD16 /* Frameworks */,
+				CACC20B91CE070F80009AD16 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QRCodeSwift;
+			productName = QRCodeSwift;
+			productReference = CACC20BB1CE070F80009AD16 /* QRCodeSwift.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CACC20B31CE070F80009AD16 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Ryota Iwai";
+				TargetAttributes = {
+					CACC20BA1CE070F80009AD16 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+				};
+			};
+			buildConfigurationList = CACC20B61CE070F80009AD16 /* Build configuration list for PBXProject "QRCodeSwift" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CACC20B21CE070F80009AD16;
+			productRefGroup = CACC20BC1CE070F80009AD16 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CACC20BA1CE070F80009AD16 /* QRCodeSwift */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CACC20B91CE070F80009AD16 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACC20D11CE0811C0009AD16 /* QRCodeReaderViewController.storyboard in Resources */,
+				CACC20C91CE070F90009AD16 /* LaunchScreen.storyboard in Resources */,
+				CACC20C61CE070F90009AD16 /* Assets.xcassets in Resources */,
+				CACC20C41CE070F90009AD16 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CACC20B71CE070F80009AD16 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CACC20D31CE0813A0009AD16 /* QRCodeReaderViewController.swift in Sources */,
+				CACC20C11CE070F90009AD16 /* ViewController.swift in Sources */,
+				CACC20BF1CE070F90009AD16 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		CACC20C21CE070F90009AD16 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CACC20C31CE070F90009AD16 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		CACC20C71CE070F90009AD16 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CACC20C81CE070F90009AD16 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		CACC20CB1CE070F90009AD16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CACC20CC1CE070F90009AD16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CACC20CE1CE070F90009AD16 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QRCodeSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.riwi.QRCodeSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		CACC20CF1CE070F90009AD16 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = QRCodeSwift/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = jp.co.riwi.QRCodeSwift;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CACC20B61CE070F80009AD16 /* Build configuration list for PBXProject "QRCodeSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACC20CB1CE070F90009AD16 /* Debug */,
+				CACC20CC1CE070F90009AD16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CACC20CD1CE070F90009AD16 /* Build configuration list for PBXNativeTarget "QRCodeSwift" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CACC20CE1CE070F90009AD16 /* Debug */,
+				CACC20CF1CE070F90009AD16 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CACC20B31CE070F80009AD16 /* Project object */;
+}

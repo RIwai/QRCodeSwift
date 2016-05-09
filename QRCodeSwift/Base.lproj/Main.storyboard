@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="QRCodeSwift" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Please Input text" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="KK9-zU-sgw">
+                                <rect key="frame" x="36" y="28" width="248" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="jMl-K8-rQc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="5ML-aL-NaA"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wwd-bg-Isl">
+                                <rect key="frame" x="60" y="66" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="6cu-SA-bH7"/>
+                                    <constraint firstAttribute="width" constant="200" id="d44-WG-Hm1"/>
+                                </constraints>
+                                <state key="normal" title="Create QR Code"/>
+                                <connections>
+                                    <action selector="tapCreateQRCodeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="oDo-Mc-tNn"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-jY-72z">
+                                <rect key="frame" x="60" y="104" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="Xso-bM-OLd"/>
+                                    <constraint firstAttribute="width" constant="200" id="fcd-5E-yBc"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vsg-GY-v5G">
+                                <rect key="frame" x="8" y="314" width="304" height="1"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="TZs-MP-qHh"/>
+                                </constraints>
+                            </view>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="dNC-Za-kJ7">
+                                <rect key="frame" x="36" y="323" width="248" height="187"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1i-JG-rEx">
+                                <rect key="frame" x="60" y="518" width="200" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="oR7-TR-rKc"/>
+                                    <constraint firstAttribute="height" constant="30" id="wnm-yM-vwt"/>
+                                </constraints>
+                                <state key="normal" title="Read QR Code"/>
+                                <connections>
+                                    <action selector="tapReadQRCodeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="94Y-kU-85i"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="KK9-zU-sgw" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="3Kb-DN-5cP"/>
+                            <constraint firstAttribute="trailing" secondItem="vsg-GY-v5G" secondAttribute="trailing" constant="8" id="FHh-fx-skR"/>
+                            <constraint firstItem="vsg-GY-v5G" firstAttribute="top" secondItem="2eB-jY-72z" secondAttribute="bottom" constant="10" id="G0e-ip-qiV"/>
+                            <constraint firstItem="Wwd-bg-Isl" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="NMC-D1-f3F"/>
+                            <constraint firstItem="dNC-Za-kJ7" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="Q1o-E8-X0I"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="dNC-Za-kJ7" secondAttribute="trailing" constant="20" id="SBa-OS-hMU"/>
+                            <constraint firstItem="Wwd-bg-Isl" firstAttribute="top" secondItem="KK9-zU-sgw" secondAttribute="bottom" constant="8" id="Tkx-ra-k4e"/>
+                            <constraint firstItem="vsg-GY-v5G" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="8" id="Ued-wa-yz7"/>
+                            <constraint firstItem="dNC-Za-kJ7" firstAttribute="top" secondItem="vsg-GY-v5G" secondAttribute="bottom" constant="8" id="hDE-bN-t3h"/>
+                            <constraint firstItem="x1i-JG-rEx" firstAttribute="top" secondItem="dNC-Za-kJ7" secondAttribute="bottom" constant="8" id="kwg-Hk-Bvw"/>
+                            <constraint firstItem="KK9-zU-sgw" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" id="lAX-HH-4gY"/>
+                            <constraint firstItem="x1i-JG-rEx" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="mQd-10-2iA"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="x1i-JG-rEx" secondAttribute="bottom" constant="20" id="qiV-zk-twb"/>
+                            <constraint firstItem="2eB-jY-72z" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="usk-Da-oaR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="KK9-zU-sgw" secondAttribute="trailing" constant="20" id="w5L-8c-Ycu"/>
+                            <constraint firstItem="2eB-jY-72z" firstAttribute="top" secondItem="Wwd-bg-Isl" secondAttribute="bottom" constant="8" id="w75-la-AWM"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="createQRCodeButton" destination="Wwd-bg-Isl" id="CLs-m3-XfS"/>
+                        <outlet property="qrCodeImageView" destination="2eB-jY-72z" id="1Y4-Ud-nf7"/>
+                        <outlet property="readQRCodeButton" destination="x1i-JG-rEx" id="lE0-n8-FNS"/>
+                        <outlet property="readQRCodeTextView" destination="dNC-Za-kJ7" id="YKQ-Qg-KWI"/>
+                        <outlet property="textField" destination="KK9-zU-sgw" id="P0W-RH-OmH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="429"/>
+        </scene>
+    </scenes>
+</document>
