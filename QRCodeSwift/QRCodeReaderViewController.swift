@@ -22,6 +22,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
 
     // MARK: - Private properties
     private let captureSession = AVCaptureSession()
+    private var inputCameras: [AVCaptureDevice] = []
     
     // MARK: - IBOutlet
     @IBOutlet weak var captureBaseView: UIView!
@@ -48,25 +49,35 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
 
         self.captureSession.startRunning()
     }
-    
+
     private func setupInputDevice() -> Bool {
         guard
             let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo),
             let captureDevices = devices as? [AVCaptureDevice] else {
                 return false
         }
-        var captureDevice: AVCaptureDevice?
+
         for device in captureDevices {
             if device.position == .Back {
-                captureDevice = device
+                self.inputCameras.insert(device, atIndex: 0)
+            } else if device.position == .Front {
+                self.inputCameras.append(device)
+            }
+            
+            if self.inputCameras.count == 2 {
                 break
             }
         }
-        guard let backCamera = captureDevice else {
+        
+        if self.inputCameras.count == 0 {
+            return false
+        }
+        
+        guard let camera = self.inputCameras.first else {
             return false
         }
         do {
-            let input = try AVCaptureDeviceInput(device: backCamera)
+            let input = try AVCaptureDeviceInput(device: camera)
             if !self.captureSession.canAddInput(input) {
                 return false
             }
@@ -104,9 +115,46 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         
         return
     }
+
+    private func changeCamera() {
+        if self.inputCameras.count < 2 {
+            return
+        }
+        
+        guard let currentDeviceInput = self.captureSession.inputs.first as? AVCaptureDeviceInput else {
+            return
+        }
+        self.captureSession.beginConfiguration()
+        var camera: AVCaptureDevice?
+        if currentDeviceInput.device.position == .Back {
+            camera = self.inputCameras.last
+        } else {
+            camera = self.inputCameras.first
+        }
+        self.captureSession.removeInput(currentDeviceInput)
+        do {
+            let input = try AVCaptureDeviceInput(device: camera)
+            if self.captureSession.canAddInput(input) {
+                self.captureSession.addInput(input)
+            }
+        } catch {
+            // Error
+        }
+        self.captureSession.commitConfiguration()
+    }
     
     // MARK: - IBAction
+    @IBAction func tapCameraChange(sender: AnyObject) {
+        self.changeCamera()
+        
+        UIView.beginAnimations("Flip Camera View", context: nil)
+        UIView.setAnimationDuration(0.4)
+        UIView.setAnimationTransition(.FlipFromRight, forView: self.captureBaseView, cache: true)
+        UIView.commitAnimations()
+    }
+    
     @IBAction func tapCancelButton(sender: AnyObject) {
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

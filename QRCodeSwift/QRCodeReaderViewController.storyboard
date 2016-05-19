@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFr-SW-yf0">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="QFr-SW-yf0">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -17,40 +17,69 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dod-Uc-y88">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dod-Uc-y88">
+                                <rect key="frame" x="0.0" y="44" width="320" height="464"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ocw-9F-sN4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="40s-mv-T01">
+                                        <rect key="frame" x="180" y="2" width="120" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="4ez-Ls-YyD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Change Camera"/>
+                                        <connections>
+                                            <action selector="tapCameraChange:" destination="QFr-SW-yf0" eventType="touchUpInside" id="wyc-wG-VZs"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="40s-mv-T01" secondAttribute="bottom" constant="2" id="6qB-p8-VnR"/>
+                                    <constraint firstItem="40s-mv-T01" firstAttribute="top" secondItem="ocw-9F-sN4" secondAttribute="top" constant="2" id="SQv-Y6-GYk"/>
+                                    <constraint firstAttribute="height" constant="44" id="XEU-fr-REC"/>
+                                    <constraint firstAttribute="trailing" secondItem="40s-mv-T01" secondAttribute="trailing" constant="20" id="gsv-jy-1ZC"/>
+                                </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Oai-7Q-HVF">
                                 <rect key="frame" x="0.0" y="508" width="320" height="60"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-kP-QWb">
+                                        <rect key="frame" x="60" y="15" width="200" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="NYj-RF-Wbg"/>
+                                            <constraint firstAttribute="width" constant="200" id="ZWc-iR-GUt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="tapCancelButton:" destination="QFr-SW-yf0" eventType="touchUpInside" id="M3y-py-fyq"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="hza-sb-WHe"/>
+                                    <constraint firstItem="WlW-kP-QWb" firstAttribute="centerY" secondItem="Oai-7Q-HVF" secondAttribute="centerY" id="oy5-w8-M23"/>
+                                    <constraint firstItem="WlW-kP-QWb" firstAttribute="centerX" secondItem="Oai-7Q-HVF" secondAttribute="centerX" id="yUW-oI-gGd"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WlW-kP-QWb">
-                                <rect key="frame" x="60" y="518" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="9Jy-V1-acF"/>
-                                    <constraint firstAttribute="width" constant="200" id="XS2-J2-3sp"/>
-                                </constraints>
-                                <state key="normal" title="Cancel"/>
-                                <connections>
-                                    <action selector="tapCancelButton:" destination="QFr-SW-yf0" eventType="touchUpInside" id="M3y-py-fyq"/>
-                                </connections>
-                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="ww4-OS-dBE" firstAttribute="top" secondItem="Dod-Uc-y88" secondAttribute="bottom" id="27I-cN-jae"/>
                             <constraint firstAttribute="trailing" secondItem="Oai-7Q-HVF" secondAttribute="trailing" id="Ip3-J4-Dpx"/>
                             <constraint firstItem="Oai-7Q-HVF" firstAttribute="leading" secondItem="U5l-Mv-s8w" secondAttribute="leading" id="Jzl-pP-dS9"/>
-                            <constraint firstAttribute="trailing" secondItem="Dod-Uc-y88" secondAttribute="trailing" id="cHF-rc-e1L"/>
+                            <constraint firstItem="Dod-Uc-y88" firstAttribute="top" secondItem="ocw-9F-sN4" secondAttribute="bottom" id="Lw3-Cn-qry"/>
+                            <constraint firstAttribute="trailing" secondItem="Dod-Uc-y88" secondAttribute="trailing" id="MRG-eZ-RMz"/>
+                            <constraint firstItem="Dod-Uc-y88" firstAttribute="leading" secondItem="U5l-Mv-s8w" secondAttribute="leading" id="Mll-v6-Vmd"/>
                             <constraint firstItem="ww4-OS-dBE" firstAttribute="top" secondItem="Oai-7Q-HVF" secondAttribute="bottom" id="gJM-9f-7fU"/>
-                            <constraint firstItem="ww4-OS-dBE" firstAttribute="top" secondItem="WlW-kP-QWb" secondAttribute="bottom" constant="20" id="hM0-ZQ-IK6"/>
-                            <constraint firstItem="WlW-kP-QWb" firstAttribute="centerX" secondItem="U5l-Mv-s8w" secondAttribute="centerX" id="iSg-Gh-tiT"/>
-                            <constraint firstItem="Dod-Uc-y88" firstAttribute="top" secondItem="U5l-Mv-s8w" secondAttribute="top" id="pVE-Px-qeS"/>
-                            <constraint firstItem="Dod-Uc-y88" firstAttribute="leading" secondItem="U5l-Mv-s8w" secondAttribute="leading" id="zad-Ei-FTU"/>
+                            <constraint firstItem="ocw-9F-sN4" firstAttribute="top" secondItem="U5l-Mv-s8w" secondAttribute="top" id="hzj-AH-FsV"/>
+                            <constraint firstItem="ocw-9F-sN4" firstAttribute="leading" secondItem="U5l-Mv-s8w" secondAttribute="leading" id="sJv-1O-ntt"/>
+                            <constraint firstItem="Oai-7Q-HVF" firstAttribute="top" secondItem="Dod-Uc-y88" secondAttribute="bottom" id="toH-aS-JqA"/>
+                            <constraint firstAttribute="trailing" secondItem="ocw-9F-sN4" secondAttribute="trailing" id="xoR-eJ-BvZ"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

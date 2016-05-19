@@ -83,6 +83,7 @@ class ViewController: UIViewController, UITextFieldDelegate, QRCodeReaderViewCon
             return
         }
         readerViewController.delegate = self
+        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Slide)
         self.presentViewController(readerViewController, animated: true, completion: nil)
         self.readQRCodeTextView.text = ""
     }
@@ -116,7 +117,8 @@ class ViewController: UIViewController, UITextFieldDelegate, QRCodeReaderViewCon
 
     // MARK: - QRCodeReaderViewControllerDelegate
     func readStrings(readerViewController: QRCodeReaderViewController, strings: [String]) {
-        readerViewController.dismissViewControllerAnimated(true) { 
+        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
+        readerViewController.dismissViewControllerAnimated(true) {
             for string in strings {
                 self.readQRCodeTextView.text = self.readQRCodeTextView.text?.stringByAppendingString(string + "\n\n") ?? string + "\n\n"
             }
