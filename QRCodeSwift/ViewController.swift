@@ -23,29 +23,29 @@ class ViewController: UIViewController, UITextFieldDelegate, QRCodeReaderViewCon
 
         // For QR Code Image to sharp
         self.qrCodeImageView.layer.magnificationFilter = kCAFilterNearest
-        self.qrCodeImageView.contentMode = .ScaleAspectFit
+        self.qrCodeImageView.contentMode = .scaleAspectFit
     }
 
     // MARK: - Private
     private func createQRCode() {
         guard let currentText = self.textField.text else {
             // Error
-            self.qrCodeImageView.hidden = true
+            self.qrCodeImageView.isHidden = true
             return
         }
         
         // Create filter
         guard let filter = CIFilter(name: "CIQRCodeGenerator") else {
             // Error
-            self.qrCodeImageView.hidden = true
+            self.qrCodeImageView.isHidden = true
             return
         }
         filter.setDefaults()
 
         // Set input text
-        guard let inputData = currentText.dataUsingEncoding(NSUTF8StringEncoding) else {
+        guard let inputData = currentText.data(using: .utf8) else {
             // Error
-            self.qrCodeImageView.hidden = true
+            self.qrCodeImageView.isHidden = true
             return
         }
         filter.setValue(inputData, forKey: "inputMessage")
@@ -56,15 +56,20 @@ class ViewController: UIViewController, UITextFieldDelegate, QRCodeReaderViewCon
         // Create CIImage
         guard let ciImage = filter.outputImage else {
             // Error
-            self.qrCodeImageView.hidden = true
+            self.qrCodeImageView.isHidden = true
             return
         }
         // Convert to CGImage
-        let cgImage = CIContext(options: nil).createCGImage(ciImage, fromRect: ciImage.extent)
+        let ciContext = CIContext()
+        guard let cgImage = ciContext.createCGImage(ciImage, from: ciImage.extent) else {
+            // Error
+            self.qrCodeImageView.isHidden = true
+            return
+        }
         // Convert to UIImage and set to UIImageView
-        let uiimage = UIImage(CGImage: cgImage, scale: UIScreen.mainScreen().scale, orientation: .Up)
+        let uiimage = UIImage(cgImage: cgImage, scale: UIScreen.main.scale, orientation: .up)
         self.qrCodeImageView.image = uiimage
-        self.qrCodeImageView.hidden = false
+        self.qrCodeImageView.isHidden = false
     }
 
     // MARK: - IBAction
@@ -83,46 +88,46 @@ class ViewController: UIViewController, UITextFieldDelegate, QRCodeReaderViewCon
             return
         }
         readerViewController.delegate = self
-        UIApplication.sharedApplication().setStatusBarHidden(true, withAnimation: .Slide)
-        self.presentViewController(readerViewController, animated: true, completion: nil)
+        UIApplication.shared.setStatusBarHidden(true, with: .slide)
+        self.present(readerViewController, animated: true, completion: nil)
         self.readQRCodeTextView.text = ""
     }
 
     // MARK: - UITextFieldDelegate
-    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         guard let currentText = self.textField.text else {
-            self.createQRCodeButton.enabled = true
+            self.createQRCodeButton.isEnabled = true
             return true
         }
         let length = currentText.characters.count - range.length + string.characters.count
         if length > 0 {
-            self.createQRCodeButton.enabled = true
+            self.createQRCodeButton.isEnabled = true
         } else {
-            self.createQRCodeButton.enabled = false
+            self.createQRCodeButton.isEnabled = false
         }
         
         return true
     }
     
-    func textFieldShouldClear(textField: UITextField) -> Bool {
-        self.createQRCodeButton.enabled = false
+    private func textFieldShouldClear(textField: UITextField) -> Bool {
+        self.createQRCodeButton.isEnabled = false
         return true
     }
     
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         self.textField.resignFirstResponder()
         return true
     }
 
     // MARK: - QRCodeReaderViewControllerDelegate
     func readStrings(readerViewController: QRCodeReaderViewController, strings: [String]) {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
-        readerViewController.dismissViewControllerAnimated(true) {
+        UIApplication.shared.setStatusBarHidden(false, with: .slide)
+        readerViewController.dismiss(animated: true) {
             for string in strings {
-                self.readQRCodeTextView.text = self.readQRCodeTextView.text?.stringByAppendingString(string + "\n\n") ?? string + "\n\n"
+                self.readQRCodeTextView.text = self.readQRCodeTextView.text?.appendingFormat(string + "\n\n") ?? string + "\n\n"
             }
-            self.readQRCodeTextView.hidden = false
+            self.readQRCodeTextView.isHidden = false
         }
     }
 }

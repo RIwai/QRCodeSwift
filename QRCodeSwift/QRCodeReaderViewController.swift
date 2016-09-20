@@ -7,7 +7,6 @@
 //
 
 import UIKit
-
 import AVFoundation
 
 // MARK: - Protocol
@@ -51,16 +50,26 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
 
     private func setupInputDevice() -> Bool {
-        guard
-            let devices = AVCaptureDevice.devicesWithMediaType(AVMediaTypeVideo),
-            let captureDevices = devices as? [AVCaptureDevice] else {
+        var cameraDevices: [AVCaptureDevice]?
+        if #available(iOS 10, *) {
+            let deviceDiscoverySession = AVCaptureDeviceDiscoverySession(deviceTypes: [.builtInWideAngleCamera],
+                                                                         mediaType: AVMediaTypeVideo,
+                                                                         position: .unspecified)
+            cameraDevices = deviceDiscoverySession?.devices
+        } else {
+            guard let devices = AVCaptureDevice.devices(withMediaType: AVMediaTypeVideo) else {
                 return false
+            }
+            cameraDevices = devices as? [AVCaptureDevice]
+        }
+        guard let captureDevices = cameraDevices else {
+            return false
         }
 
         for device in captureDevices {
-            if device.position == .Back {
-                self.inputCameras.insert(device, atIndex: 0)
-            } else if device.position == .Front {
+            if device.position == .back {
+                self.inputCameras.insert(device, at: 0)
+            } else if device.position == .front {
                 self.inputCameras.append(device)
             }
             
@@ -68,21 +77,22 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
                 break
             }
         }
-        
+
         if self.inputCameras.count == 0 {
             return false
         }
-        
+
         guard let camera = self.inputCameras.first else {
             return false
         }
+
         do {
             let input = try AVCaptureDeviceInput(device: camera)
             if !self.captureSession.canAddInput(input) {
                 return false
             }
             self.captureSession.addInput(input)
-            
+
             return true
         } catch {
             // Error
@@ -95,11 +105,11 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         if !self.captureSession.canAddOutput(output) {
             return false
         }
-        output.setMetadataObjectsDelegate(self, queue: dispatch_get_main_queue())
+        output.setMetadataObjectsDelegate(self, queue: DispatchQueue.main)
         self.captureSession.addOutput(output)
         guard
-            let outputTypes = output.availableMetadataObjectTypes as? [String]
-            where outputTypes.contains(AVMetadataObjectTypeQRCode) else {
+            let outputTypes = output.availableMetadataObjectTypes as? [String],
+            outputTypes.contains(AVMetadataObjectTypeQRCode) else {
                 return false
         }
         output.metadataObjectTypes = [AVMetadataObjectTypeQRCode]
@@ -108,8 +118,10 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
     }
 
     private func setupCaptureLayer() {
-        let capturePreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession)
-        capturePreviewLayer.frame = UIScreen.mainScreen().bounds
+        guard let capturePreviewLayer = AVCaptureVideoPreviewLayer(session: self.captureSession) else {
+            return
+        }
+        capturePreviewLayer.frame = UIScreen.main.bounds
         capturePreviewLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         self.captureBaseView.layer.addSublayer(capturePreviewLayer)
         
@@ -126,7 +138,7 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         }
         self.captureSession.beginConfiguration()
         var camera: AVCaptureDevice?
-        if currentDeviceInput.device.position == .Back {
+        if currentDeviceInput.device.position == .back {
             camera = self.inputCameras.last
         } else {
             camera = self.inputCameras.first
@@ -149,31 +161,31 @@ class QRCodeReaderViewController: UIViewController, AVCaptureMetadataOutputObjec
         
         UIView.beginAnimations("Flip Camera View", context: nil)
         UIView.setAnimationDuration(0.4)
-        UIView.setAnimationTransition(.FlipFromRight, forView: self.captureBaseView, cache: true)
+        UIView.setAnimationTransition(.flipFromRight, for: self.captureBaseView, cache: true)
         UIView.commitAnimations()
     }
     
     @IBAction func tapCancelButton(sender: AnyObject) {
-        UIApplication.sharedApplication().setStatusBarHidden(false, withAnimation: .Slide)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        UIApplication.shared.setStatusBarHidden(false, with: .slide)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // MARK: - AVCaptureMetadataOutputObjectsDelegate
-    func captureOutput(captureOutput: AVCaptureOutput!,
-                       didOutputMetadataObjects metadataObjects: [AnyObject]!,
-                                                fromConnection connection: AVCaptureConnection!) {
+    func captureOutput(_ captureOutput: AVCaptureOutput!,
+                       didOutputMetadataObjects metadataObjects: [Any]!,
+                       from connection: AVCaptureConnection!) {
         var readStrings: [String] = []
         for object in metadataObjects {
             guard
-                let metaDataObject = object as? AVMetadataMachineReadableCodeObject
-                where metaDataObject.type == AVMetadataObjectTypeQRCode else {
+                let metaDataObject = object as? AVMetadataMachineReadableCodeObject,
+                metaDataObject.type == AVMetadataObjectTypeQRCode else {
                     continue
             }
             readStrings.append(metaDataObject.stringValue)
         }
-        
+
         if readStrings.count > 0 {
-            self.delegate?.readStrings(self, strings: readStrings)
+            self.delegate?.readStrings(readerViewController: self, strings: readStrings)
         }
     }
 }
